@@ -1,16 +1,14 @@
 ﻿<material-expansionpanel-set>
     <material-expansionpanel
             name="查詢供餐車次及區間"
-            secondaryText="輸入乘車日期" [showSaveCancel]="false" 
-            (save)="resetSearch()"
-            (cancel)="resetSearch()">
+            secondaryText="輸入乘車日期" [showSaveCancel]="false">
         <div>
-            <material-input #myInput
+            <material-input #dateInput
                             label="Ex: 2017/01/01"
                             floatingLabel>
             </material-input>
             <material-button raised
-                             (trigger)="search(myInput.inputText)"
+                             (trigger)="search(dateInput.inputText)"
                              class="blue">
                 查詢
             </material-button>
@@ -20,71 +18,80 @@
     <material-expansionpanel
             class="betting-panel"
             name="單程便當"
-            secondaryText="便當資訊" [showSaveCancel]="false" 
-            (save)="settingsUpdated()"
-            (cancel)="resetBetting()">
+            secondaryText="便當資訊" [showSaveCancel]="false">
         <div>
-            <h3>Lottery</h3>
-            <p><strong>Description:</strong> lottery</p>
-
-            <h3>Strategy</h3>
-            <p><strong>Description:</strong> strategy</p>
+            <material-input #orderID
+                            label="身分證號"
+                            floatingLabel>
+            </material-input>
+            <material-input #orderResNo
+                            label="訂位預約號"
+                            floatingLabel>
+            </material-input>
+            <material-button raised
+                             (trigger)="order(orderID.inputText, orderResNo.inputText)"
+                             class="blue">
+                查詢
+            </material-button>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             class="betting-panel"
             name="取消便當訂購"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
-            (save)="settingsUpdated()"
-            (cancel)="resetBetting()">
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
         <div>
-            <h3>Lottery</h3>
-            <p><strong>Description:</strong> lottery</p>
-
-            <h3>Strategy</h3>
-            <p><strong>Description:</strong> strategy</p>
+            <material-input #cancelID
+                            label="身分證號"
+                            floatingLabel>
+            </material-input>
+            <material-input #cancelResNo
+                            label="訂位預約號"
+                            floatingLabel>
+            </material-input>
+            <material-button raised
+                             (trigger)="cancel(cancelID.inputText, cancelResNo.inputText)"
+                             class="blue">
+                查詢
+            </material-button>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             class="betting-panel"
             name="變更訂購資料"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
-            (save)="settingsUpdated()"
-            (cancel)="resetBetting()">
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
         <div>
-            <h3>Lottery</h3>
-            <p><strong>Description:</strong> lottery</p>
-
-            <h3>Strategy</h3>
-            <p><strong>Description:</strong> strategy</p>
+            <material-input #updateID
+                            label="身分證號"
+                            floatingLabel>
+            </material-input>
+            <material-input #updateResNo
+                            label="訂位預約號"
+                            floatingLabel>
+            </material-input>
+            <material-button raised
+                             (trigger)="update(updateID.inputText, updateResNo.inputText)"
+                             class="blue">
+                查詢
+            </material-button>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             name="查詢便當訂購記錄"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
-            (save)="settingsUpdated()"
-            (cancel)="resetOther()">
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
         <div>
-            <h3>Annual interest rate</h3>
-            <material-checkbox label="Investing" [(checked)]="isInvesting">
-            </material-checkbox><br>
-            <material-radio-group>
-                <material-radio *ngFor="let value of interestRateOptions"
-                                [checked]="value == interestRate"
-                                [disabled]="!isInvesting"
-                                (checkedChange)="interestRate = $event ? value : interestRate">
-                    {{ value }}%
-                </material-radio>
-            </material-radio-group>
-
-            <h3>Length of simulation</h3>
-            <material-radio-group>
-                <material-radio *ngFor="let value of yearsOptions"
-                                [checked]="value == years"
-                                (checkedChange)="years = $event ? value : years">
-                    {{ value }} year{{ value > 1 ? 's' : '' }}
-                </material-radio>
-            </material-radio-group>
+            <material-input #queryID
+                            label="身分證號"
+                            floatingLabel>
+            </material-input>
+            <material-input #queryResNo
+                            label="訂位預約號"
+                            floatingLabel>
+            </material-input>
+            <material-button raised
+                             (trigger)="query(queryID.inputText, queryResNo.inputText)"
+                             class="blue">
+                查詢
+            </material-button>
         </div>
     </material-expansionpanel>
 </material-expansionpanel-set>

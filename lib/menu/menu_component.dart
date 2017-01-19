@@ -56,20 +56,19 @@ class MenuComponent implements OnInit {
 //    resetOther();
   }
 
-  void resetSearch() {
-    //
-    searchResults = [];
-  }
-
-  void settingsUpdated() {
+  void order(String idStr, String resNoStr) {
     //
   }
 
-  void resetBetting() {
+  void cancel(String idStr, String resNoStr) {
     //
   }
 
-  void resetOther() {
+  void update(String idStr, String resNoStr) {
+    //
+  }
+
+  void query(String idStr, String resNoStr) {
     //
   }
 
