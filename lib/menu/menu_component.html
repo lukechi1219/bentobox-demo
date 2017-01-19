@@ -1,7 +1,7 @@
 ﻿<material-expansionpanel-set>
     <material-expansionpanel
             name="查詢供餐車次及區間"
-            secondaryText="輸入乘車日期" showSaveCancel="false"
+            secondaryText="輸入乘車日期" [showSaveCancel]="false" 
             (save)="resetSearch()"
             (cancel)="resetSearch()">
         <div>
@@ -20,7 +20,7 @@
     <material-expansionpanel
             class="betting-panel"
             name="單程便當"
-            secondaryText="便當資訊" showSaveCancel="false"
+            secondaryText="便當資訊" [showSaveCancel]="false" 
             (save)="settingsUpdated()"
             (cancel)="resetBetting()">
         <div>
@@ -34,7 +34,7 @@
     <material-expansionpanel
             class="betting-panel"
             name="取消便當訂購"
-            secondaryText="請輸入預約號及身分證號" showSaveCancel="false"
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
             (save)="settingsUpdated()"
             (cancel)="resetBetting()">
         <div>
@@ -48,7 +48,7 @@
     <material-expansionpanel
             class="betting-panel"
             name="變更訂購資料"
-            secondaryText="請輸入預約號及身分證號" showSaveCancel="false"
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
             (save)="settingsUpdated()"
             (cancel)="resetBetting()">
         <div>
@@ -61,7 +61,7 @@
     </material-expansionpanel>
     <material-expansionpanel
             name="查詢便當訂購記錄"
-            secondaryText="請輸入預約號及身分證號" showSaveCancel="false"
+            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false" 
             (save)="settingsUpdated()"
             (cancel)="resetOther()">
         <div>
