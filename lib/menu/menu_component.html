@@ -1,0 +1,68 @@
+<material-expansionpanel-set>
+    <material-expansionpanel
+            name="Wallet"
+            secondaryText="Initial: $100. Daily disposable income: $10."
+            (save)="settingsUpdated()"
+            (cancel)="resetWallet()">
+        <div>
+            <h3>Initial cash</h3>
+            <material-radio-group>
+                <material-radio *ngFor="let item of initialCashOptions"
+                                [checked]="item == initialCash"
+                                (checkedChange)="initialCash = $event ? item : initialCash">
+                    ${{ item }}
+                </material-radio>
+            </material-radio-group>
+
+            <h3>Daily disposable income</h3>
+            <material-radio-group>
+                <material-radio *ngFor="let item of dailyDisposableOptions"
+                                [checked]="item == dailyDisposable"
+                                (checkedChange)="dailyDisposable = $event ? item : dailyDisposable">
+                    ${{ item }}
+                </material-radio>
+            </material-radio-group>
+        </div>
+    </material-expansionpanel>
+    <material-expansionpanel class="betting-panel"
+                             name="Betting"
+                             secondaryText="Lottery: lottery. Strategy: strategy."
+                             (save)="settingsUpdated()"
+                             (cancel)="resetBetting()">
+        <div>
+            <h3>Lottery</h3>
+            <p><strong>Description:</strong> lottery</p>
+
+            <h3>Strategy</h3>
+            <p><strong>Description:</strong> strategy</p>
+        </div>
+    </material-expansionpanel>
+    <material-expansionpanel
+            name="Other"
+            secondaryText="Interest rate: interestRate%. Years: years."
+            (save)="settingsUpdated()"
+            (cancel)="resetOther()">
+        <div>
+            <h3>Annual interest rate</h3>
+            <material-checkbox label="Investing" [(checked)]="isInvesting">
+            </material-checkbox><br>
+            <material-radio-group>
+                <material-radio *ngFor="let value of interestRateOptions"
+                                [checked]="value == interestRate"
+                                [disabled]="!isInvesting"
+                                (checkedChange)="interestRate = $event ? value : interestRate">
+                    {{ value }}%
+                </material-radio>
+            </material-radio-group>
+
+            <h3>Length of simulation</h3>
+            <material-radio-group>
+                <material-radio *ngFor="let value of yearsOptions"
+                                [checked]="value == years"
+                                (checkedChange)="years = $event ? value : years">
+                    {{ value }} year{{ value > 1 ? 's' : '' }}
+                </material-radio>
+            </material-radio-group>
+        </div>
+    </material-expansionpanel>
+</material-expansionpanel-set>
