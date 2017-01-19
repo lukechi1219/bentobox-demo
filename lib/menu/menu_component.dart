@@ -77,7 +77,7 @@ class MenuComponent implements OnInit {
 
     Map map = {'date': dateStr};
 
-    var url = "http://bentobox.goodideas-campus.com/search";
+    var url = "https://bentobox.goodideas-campus.com/search";
 
     HttpRequest.postFormData(url, map).then((HttpRequest request) {
 
