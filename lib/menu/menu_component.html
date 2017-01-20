@@ -15,83 +15,51 @@
             <p *ngFor="let item of searchResults">車次: {{item['車次']}}: 起站: {{item['起站']}} - {{item['便當派送區間']}} - 訖站: {{item['訖站']}}</p>
         </div>
     </material-expansionpanel>
+    <material-input #sscID
+                    label="身分證號"
+                    floatingLabel>
+    </material-input>
+    <material-input #resNo
+                    label="訂位預約號"
+                    floatingLabel>
+    </material-input>
     <material-expansionpanel
             class="betting-panel"
             name="單程便當"
-            secondaryText="便當資訊" [showSaveCancel]="false">
+            secondaryText="便當資訊"
+			[showSaveCancel]="false"
+			(open)="order(sscID.inputText, sscID.inputText)">
         <div>
-            <material-input #orderID
-                            label="身分證號"
-                            floatingLabel>
-            </material-input>
-            <material-input #orderResNo
-                            label="訂位預約號"
-                            floatingLabel>
-            </material-input>
-            <material-button raised
-                             (trigger)="order(orderID.inputText, orderResNo.inputText)"
-                             class="blue">
-                查詢
-            </material-button>
+			<p>單程便當</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             class="betting-panel"
             name="取消便當訂購"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
+            secondaryText=""
+			[showSaveCancel]="false"
+			(open)="cancel(sscID.inputText, sscID.inputText)">
         <div>
-            <material-input #cancelID
-                            label="身分證號"
-                            floatingLabel>
-            </material-input>
-            <material-input #cancelResNo
-                            label="訂位預約號"
-                            floatingLabel>
-            </material-input>
-            <material-button raised
-                             (trigger)="cancel(cancelID.inputText, cancelResNo.inputText)"
-                             class="blue">
-                查詢
-            </material-button>
+			<p>取消便當訂購</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             class="betting-panel"
             name="變更訂購資料"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
+            secondaryText=""
+			[showSaveCancel]="false"
+			(open)="update(sscID.inputText, sscID.inputText)">
         <div>
-            <material-input #updateID
-                            label="身分證號"
-                            floatingLabel>
-            </material-input>
-            <material-input #updateResNo
-                            label="訂位預約號"
-                            floatingLabel>
-            </material-input>
-            <material-button raised
-                             (trigger)="update(updateID.inputText, updateResNo.inputText)"
-                             class="blue">
-                查詢
-            </material-button>
+			<p>取消便當訂購</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             name="查詢便當訂購記錄"
-            secondaryText="請輸入預約號及身分證號" [showSaveCancel]="false">
+            secondaryText=""
+			[showSaveCancel]="false"
+			(open)="query(sscID.inputText, sscID.inputText)">
         <div>
-            <material-input #queryID
-                            label="身分證號"
-                            floatingLabel>
-            </material-input>
-            <material-input #queryResNo
-                            label="訂位預約號"
-                            floatingLabel>
-            </material-input>
-            <material-button raised
-                             (trigger)="query(queryID.inputText, queryResNo.inputText)"
-                             class="blue">
-                查詢
-            </material-button>
+			<p>查詢便當訂購記錄</p>
         </div>
     </material-expansionpanel>
 </material-expansionpanel-set>

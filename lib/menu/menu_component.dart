@@ -58,18 +58,22 @@ class MenuComponent implements OnInit {
 
   void order(String idStr, String resNoStr) {
     //
+	print('order: $idStr $resNoStr');
   }
 
   void cancel(String idStr, String resNoStr) {
     //
+	print('cancel: $idStr $resNoStr');
   }
 
   void update(String idStr, String resNoStr) {
     //
+	print('update: $idStr $resNoStr');
   }
 
   void query(String idStr, String resNoStr) {
     //
+	print('query: $idStr $resNoStr');
   }
 
   void search(String dateStr) {
