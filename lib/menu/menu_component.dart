@@ -14,73 +14,132 @@ import 'package:angular2_components/angular2_components.dart';
   templateUrl: 'menu_component.html',
   directives: const [
     materialDirectives,
-    MaterialCheckboxComponent,
     MaterialExpansionPanel,
     MaterialExpansionPanelSet,
     MaterialRadioComponent,
     MaterialRadioGroupComponent,
+    MaterialCheckboxComponent,
     NgFor
   ],
   providers: const [materialProviders],
 )
 class MenuComponent implements OnInit {
 
-  final initialCashOptions = [0, 10, 100, 1000];
-
-  final dailyDisposableOptions = [0, 2, 4, 10];
-
-  final interestRateOptions = [1, 3, 5, 10];
-
-  final yearsOptions = [1, 2, 3, 5, 10];
+  String apiRoot = 'http://bentobox.goodideas-campus.com';
+//  String apiRoot = 'https://bentobox.goodideas-campus.com';
 
   List searchResults = [];
 
-  int initialCash;
+  String cancelResult = [];
 
-  int dailyDisposable;
-
-  bool isInvesting = true;
-
-  int interestRate;
-
-  int years;
-
-  var lottery;
-
-  var strategy;
+  String queryResult = [];
 
   @override
   ngOnInit() {
-//    resetWallet();
+
+    resetSearchResults();
+
 //    resetBetting();
 //    resetOther();
+  }
+
+  void resetSearchResults() {
+    searchResults = [];
+  }
+
+  void resetCancel() {
+    cancelResult = [];
+  }
+
+  void resetQuery() {
+    queryResult = [];
   }
 
   void order(String idStr, String resNoStr) {
     //
 	print('order: $idStr $resNoStr');
+
+    Map map = {'id': idStr, 'resNo': resNoStr};
+
+    String url = apiRoot + '/order';
+
+    HttpRequest.postFormData(url, map).then((HttpRequest request) {
+
+      if (request.readyState == HttpRequest.DONE &&
+          (request.status == 200 || request.status == 0)) {
+
+        Map parsedMap = JSON.decode(request.responseText);
+
+		print(parsedMap);
+      }
+    });
   }
 
   void cancel(String idStr, String resNoStr) {
     //
 	print('cancel: $idStr $resNoStr');
+
+    Map map = {'id': idStr, 'resNo': resNoStr};
+
+    String url = apiRoot + '/cancel';
+
+    HttpRequest.postFormData(url, map).then((HttpRequest request) {
+
+      if (request.readyState == HttpRequest.DONE &&
+          (request.status == 200 || request.status == 0)) {
+
+        Map parsedMap = JSON.decode(request.responseText);
+
+		cancelResult = [parsedMap];
+      }
+    });
   }
 
   void update(String idStr, String resNoStr) {
     //
 	print('update: $idStr $resNoStr');
+
+    Map map = {'id': idStr, 'resNo': resNoStr};
+
+    String url = apiRoot + '/update';
+
+    HttpRequest.postFormData(url, map).then((HttpRequest request) {
+
+      if (request.readyState == HttpRequest.DONE &&
+          (request.status == 200 || request.status == 0)) {
+
+        Map parsedMap = JSON.decode(request.responseText);
+
+		print(parsedMap);
+      }
+    });
   }
 
   void query(String idStr, String resNoStr) {
     //
 	print('query: $idStr $resNoStr');
+
+    Map map = {'id': idStr, 'resNo': resNoStr};
+
+    String url = apiRoot + '/query';
+
+    HttpRequest.postFormData(url, map).then((HttpRequest request) {
+
+      if (request.readyState == HttpRequest.DONE &&
+          (request.status == 200 || request.status == 0)) {
+
+        Map parsedMap = JSON.decode(request.responseText);
+
+		queryResult = [parsedMap];
+      }
+    });
   }
 
   void search(String dateStr) {
 
     Map map = {'date': dateStr};
 
-    var url = "https://bentobox.goodideas-campus.com/search";
+    String url = apiRoot + '/search';
 
     HttpRequest.postFormData(url, map).then((HttpRequest request) {
 

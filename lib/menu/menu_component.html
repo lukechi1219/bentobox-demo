@@ -15,6 +15,7 @@
             <p *ngFor="let item of searchResults">車次: {{item['車次']}}: 起站: {{item['起站']}} - {{item['便當派送區間']}} - 訖站: {{item['訖站']}}</p>
         </div>
     </material-expansionpanel>
+	<br/>
     <material-input #sscID
                     label="身分證號"
                     floatingLabel>
@@ -28,9 +29,9 @@
             name="單程便當"
             secondaryText="便當資訊"
 			[showSaveCancel]="false"
-			(open)="order(sscID.inputText, sscID.inputText)">
+			(open)="order(sscID.inputText, resNo.inputText)">
         <div>
-			<p>單程便當</p>
+			<p id="order"></p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
@@ -38,9 +39,10 @@
             name="取消便當訂購"
             secondaryText=""
 			[showSaveCancel]="false"
-			(open)="cancel(sscID.inputText, sscID.inputText)">
+			(open)="cancel(sscID.inputText, resNo.inputText)"
+			(close)="resetCancel()">
         <div>
-			<p>取消便當訂購</p>
+			<p *ngFor="let item of cancelResult">{{item['result']}}</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
@@ -48,18 +50,19 @@
             name="變更訂購資料"
             secondaryText=""
 			[showSaveCancel]="false"
-			(open)="update(sscID.inputText, sscID.inputText)">
+			(open)="update(sscID.inputText, resNo.inputText)">
         <div>
-			<p>取消便當訂購</p>
+			<p id="update"></p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel
             name="查詢便當訂購記錄"
             secondaryText=""
 			[showSaveCancel]="false"
-			(open)="query(sscID.inputText, sscID.inputText)">
+			(open)="query(sscID.inputText, resNo.inputText)"
+			(close)="resetQuery()">
         <div>
-			<p>查詢便當訂購記錄</p>
+			<p *ngFor="let item of queryResult">{{item['result']}}</p>
         </div>
     </material-expansionpanel>
 </material-expansionpanel-set>
