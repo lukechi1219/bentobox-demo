@@ -25,8 +25,8 @@ import 'package:angular2_components/angular2_components.dart';
 )
 class MenuComponent implements OnInit {
 
-  String apiRoot = 'http://bentobox.goodideas-campus.com';
-//  String apiRoot = 'https://bentobox.goodideas-campus.com';
+//  String apiRoot = 'http://bentobox.goodideas-campus.com';
+  String apiRoot = 'https://bentobox.goodideas-campus.com';
 
   List searchResults = [];
 
