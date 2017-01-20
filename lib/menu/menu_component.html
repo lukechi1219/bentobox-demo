@@ -1,7 +1,9 @@
 ﻿<material-expansionpanel-set>
     <material-expansionpanel
             name="查詢供餐車次及區間"
-            secondaryText="輸入乘車日期" [showSaveCancel]="false">
+            secondaryText="輸入乘車日期"
+			[showSaveCancel]="false"
+			(close)="resetSearch()">
         <div>
             <material-input #dateInput
                             label="Ex: 2017/01/01"
@@ -28,9 +30,13 @@
             class="betting-panel"
             name="單程便當"
             secondaryText="便當資訊"
-			[showSaveCancel]="false"
-			(open)="order(sscID.inputText, resNo.inputText)">
+			[showSaveCancel]="false">
         <div>
+            <material-button raised
+                             (trigger)="order(sscID.inputText, resNo.inputText)"
+                             class="blue">
+                訂購
+            </material-button>
 			<p id="order"></p>
         </div>
     </material-expansionpanel>
@@ -49,9 +55,13 @@
             class="betting-panel"
             name="變更訂購資料"
             secondaryText=""
-			[showSaveCancel]="false"
-			(open)="update(sscID.inputText, resNo.inputText)">
+			[showSaveCancel]="false">
         <div>
+            <material-button raised
+                             (trigger)="update(sscID.inputText, resNo.inputText)"
+                             class="blue">
+                變更
+            </material-button>
 			<p id="update"></p>
         </div>
     </material-expansionpanel>

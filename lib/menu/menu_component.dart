@@ -37,13 +37,13 @@ class MenuComponent implements OnInit {
   @override
   ngOnInit() {
 
-    resetSearchResults();
+    resetSearch();
 
 //    resetBetting();
 //    resetOther();
   }
 
-  void resetSearchResults() {
+  void resetSearch() {
     searchResults = [];
   }
 
